@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Đăng Ký</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/nunito-font.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="css/formSignUp.css"/>
+</head>
+<body class="form-v6">
+	<div class="page-content">
+		<div class="form-v6-content">
+			<div class="form-left">
+				<img src="images/form-v6.jpg" alt="form">
+			</div>
+			<form class="form-detail" th:action="@{/dang-ky}" method="post" th:object = "${userForm}">
+				<h2>Đăng Ký</h2>
+				<span th:text="${message}" style="font-style:italic;color:red"></span>
+				<span th:text="${duplicate_name}" style="font-style:italic;color:red"></span><br>
+                <span th:text="${duplicate_email}" style="font-style:italic;color:red"></span>
+				<div class="form-row">
+					<input th:field = "*{name}" type="text" name="full-name" id="full-name" class="input-text" placeholder="Tên của bạn" required>
+				</div>
+				<div class="form-row">
+					<input th:field = "*{email}" type="text" name="your-email" id="your-email" class="input-text" placeholder="Địa chỉ Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+				</div>
+				<div class="form-row">
+					<input th:field = "*{password}" type="password" name="password" id="password" class="input-text" placeholder="Mật Khẩu" required>
+				</div>
+				<div class="form-row">
+					<input th:field = "*{confirmPassword}" type="password" name="comfirm-password" id="comfirm-password" class="input-text" placeholder="Nhập lại mật khẩu" required>
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Đăng Ký">
+				</div>
+				<div class="form-row">
+					<a th:href="@{/dang-nhap}" style="font-style: italic;">Đăng Nhập</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

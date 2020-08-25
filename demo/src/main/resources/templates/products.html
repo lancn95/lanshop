@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8">
+      <title>List brands</title>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+   </head>
+   
+   <body>
+      <table>
+      	<thead>
+      		<th>Id</th>
+      		<th>Logo</th>
+			<th>Name</th>
+			<th>Xem</th>
+      	</thead>
+      	<tbody>
+      		<tr th:each="product : ${products}">
+      			<td th:text="${product.id}"></td>
+      			<td>
+      				
+      				<img  th:src="@{${product.mainImagePath}}" style="width: 100px"/>
+      			</td>
+      			<td th:text="${product.name}"></td>
+      			<td>
+      				<a th:href="@{|/product-update?id=${product.id}|}">
+						Xem
+					</a>
+      			</td>
+      		</tr>
+      	</tbody>
+      </table>
+       
+   </body>
+   
+
+
+</html>
