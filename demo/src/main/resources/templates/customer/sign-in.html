@@ -24,10 +24,16 @@
 					</button>
 					<span th:text="${success}"></span>
 				</div>
+				<a th:href="@{/}" style="color:orange;font-size:30px">Quay lại cửa hàng</a>
 				<h2>Đăng Nhập</h2>
-				
+				<div th:if="${param.error}">
+		            <span style="color:red;font-style="italic"">Email hoặc mật khẩu không đúng</span>	
+		        </div>
+		        <div th:if="${param.logout}">
+					            You have been logged out.
+					        </div>
 				<div class="form-row">
-					<input type="text" name="your-email" id="your-email" class="input-text" placeholder="Địa chỉ Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+					<input type="text" name="username" id="your-email" class="input-text" placeholder="Địa chỉ Email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
 				</div>
 				<div class="form-row">
 					<input type="password" name="password" id="password" class="input-text" placeholder="Mật Khẩu" required>
@@ -37,8 +43,12 @@
 				</div>
 				<div class="form-row">
 					<p style="color: orange">Bạn chưa có tài khoản?</p>
-					<a th:href="@{/dang-ky}" style="font-style: italic;">Tạo tài khoản tại đây</a>
+					<div style="display:flex">
+					<div><a th:href="@{/dang-ky}" style="font-style: italic;">Tạo tài khoản tại đây</a></div>
+					<div><a th:href="@{/dang-ky}" style="font-style: italic;color: orange;margin-left:110px">Quên mật khẩu?</a></div>
+					</div>
 				</div>
+				
 			</form>
 		</div>
 	</div>

@@ -11,7 +11,7 @@ import com.example.demo.form.UserForm;
 
 @Entity
 @Table(name = "user", uniqueConstraints = { @UniqueConstraint(name = "APP_USER_UK", columnNames = "User_Name") })
-public class User {
+public class AppUser {
 	@Id
 	@Column(name = "USER_ID")
 	@GeneratedValue
@@ -38,11 +38,11 @@ public class User {
 	@Column(name = "RESET_TOKEN", length = 36)
 	private String resetToken;
 
-	public User() {
+	public AppUser() {
 
 	}
 
-	public User(long userId, String userName, String encrytedPassword, boolean enabled, String address, String email,
+	public AppUser(long userId, String userName, String encrytedPassword, boolean enabled, String address, String email,
 			String phone, String resetToken) {
 
 		this.userId = userId;
@@ -55,7 +55,7 @@ public class User {
 		this.resetToken = resetToken;
 	}
 
-	public User(UserForm form) {
+	public AppUser(UserForm form) {
 		this.userName = form.getName();
 		this.email = form.getEmail();
 		this.encrytedPassword = form.getPassword();

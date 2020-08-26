@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entities.User;
+import com.example.demo.entities.AppUser;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
 
@@ -16,38 +16,38 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	public List<User> findAll() {
-		List<User> users = userRepository.findAll();
+	public List<AppUser> findAll() {
+		List<AppUser> users = userRepository.findAll();
 		return users;
 	}
 
 	@Override
-	public User findById(long id) {
-		User user = userRepository.findById(id).orElse(null);
+	public AppUser findById(long id) {
+		AppUser user = userRepository.findById(id).orElse(null);
 		return user;
 	}
 
 	@Override
-	public void save(User user) {
+	public void save(AppUser user) {
 		userRepository.save(user);
 
 	}
 
 	@Override
-	public void update(User user) {
+	public void update(AppUser user) {
 		userRepository.save(user);
 
 	}
 
 	@Override
-	public void delete(User user) {
+	public void delete(AppUser user) {
 		userRepository.delete(user);
 
 	}
 
 	@Override
-	public List<User> findByPartOfName(String name) {
-		List<User> users = userRepository.searchByNameLike(name);
+	public List<AppUser> findByPartOfName(String name) {
+		List<AppUser> users = userRepository.searchByNameLike(name);
 		return users;
 	}
 

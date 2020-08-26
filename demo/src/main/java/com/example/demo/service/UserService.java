@@ -2,18 +2,18 @@ package com.example.demo.service;
 
 import java.util.List;
 
-import com.example.demo.entities.User;
+import com.example.demo.entities.AppUser;
 
 public interface UserService {
-	List<User> findAll();
+	List<AppUser> findAll();
 
-	User findById(long id);
+	AppUser findById(long id);
 
-	void save(User user);
+	void save(AppUser user);
 
-	void update(User user);
+	void update(AppUser user);
 
-	void delete(User user);
+	void delete(AppUser user);
 
-	List<User> findByPartOfName(String name);
+	List<AppUser> findByPartOfName(String name);
 }

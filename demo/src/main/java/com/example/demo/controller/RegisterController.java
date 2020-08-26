@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.demo.entities.User;
+import com.example.demo.entities.AppUser;
 import com.example.demo.form.UserForm;
 import com.example.demo.service.UserService;
 import com.example.demo.utils.PasswordIsValid;
@@ -19,11 +19,6 @@ public class RegisterController {
 
 	@Autowired
 	private UserService userService;
-
-	@RequestMapping(value = { "/", "/lan" }, method = RequestMethod.GET)
-	public String test() {
-		return "customer/index";
-	}
 
 	@RequestMapping(value = "/dang-ky", method = RequestMethod.GET)
 	public String signUp(Model model) {
@@ -51,7 +46,7 @@ public class RegisterController {
 			if (PasswordIsValid.IsValid(model, userForm, redirect) == false) {
 				return "customer/sign-up";
 			} else {
-				User user = new User(userForm);
+				AppUser user = new AppUser(userForm);
 				user.setEnabled(true);
 				userService.save(user);
 

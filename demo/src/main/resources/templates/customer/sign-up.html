@@ -17,6 +17,7 @@
 				<img src="images/form-v6.jpg" alt="form">
 			</div>
 			<form class="form-detail" th:action="@{/dang-ky}" method="post" th:object = "${userForm}">
+				<a th:href="@{/}" style="color:orange;font-size:35px">Quay lại cửa hàng</a>
 				<h2>Đăng Ký</h2>
 				<span th:text="${message}" style="font-style:italic;color:red"></span>
 				<span th:text="${duplicate_name}" style="font-style:italic;color:red"></span><br>
