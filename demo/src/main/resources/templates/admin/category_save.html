@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace = "admin/common :: head"></head>
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$('#primaryImage').change(function(){
+    			showImageThumbnail(this);
+    		});
+    		
+    		$("input[name='extraImage']").each(function(index){
+    			$(this).change(function(){
+    				showExtraImageThumbnail(this, index);
+    			});
+    		});
+
+	    	function showImageThumbnail(fileInput){
+	    		var file = fileInput.files[0];
+	    		var reader = new FileReader();
+
+	    		reader.onload = function(e){
+	    			$('#thumbnail').attr('src', e.target.result);
+	    		};
+
+	    		reader.readAsDataURL(file);
+	    	}
+
+	    	function showExtraImageThumbnail(fileInput, index){
+	    		var file = fileInput.files[0];
+	    		var reader = new FileReader();
+
+	    		reader.onload = function(e){
+	    			$('#thumbnail' + index).attr('src', e.target.result);
+	    		};
+
+	    		reader.readAsDataURL(file);
+	    	}
+    	});
+    </script>
+    <body class="sb-nav-fixed">
+        <nav th:replace="admin/common :: topnav"></nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav" th:replace = "admin/common :: layoutSidenav_nav"></div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">Thêm mới sản phẩm</h1>
+                        <ol th:replace = "admin/common :: breadcumb-save-category"></ol>
+                        
+                        <form method="POST" th:action="@{/admin/category-save}"
+									th:object="${categoryForm}" enctype="multipart/form-data">
+                        	<!-- Nav tabs -->
+							<ul class="nav nav-tabs">
+							  <li class="nav-item">
+							    <a class="nav-link active" data-toggle="tab" href="#home">Overview</a>
+							  </li>
+							  <li class="nav-item">
+							    <a class="nav-link" data-toggle="tab" href="#des">Description</a>
+							  </li>
+							  <li class="nav-item">
+							    <a class="nav-link" data-toggle="tab" href="#Images">Images</a>
+							  </li>
+							</ul>
+
+							<!-- Tab panes -->
+							  <div class="tab-content">
+							    <div id="home" class="container tab-pane active"><br>
+				
+								     <div class="form-group row">
+									    <label for="Category Name" class="col-sm-2 col-form-label">Category Name</label>
+									    <div class="col-sm-10">
+									      <input type="text" class="form-control" placeholder="Category name" th:field="*{name}">
+
+									    </div>
+									 </div>
+
+									 
+							    </div>
+							    <div id="des" class="container tab-pane fade"><br>
+							    
+									 
+							      	
+							    </div>
+							    <div id="Images" class="container tab-pane fade"><br>
+							    </div>  
+							  
+							  <div style="margin-top: 10px">
+								<button type="submit" class="btn btn-success" style="margin-left: 15px">Tạo mới</button>
+
+								<button type="reset" class="btn btn-primary" style="margin-left: 15px">Reset</button>
+							  </div>
+							</form>
+                       
+                    </div>
+                </main>
+                <footer th:replace = "admin/common :: footer"></footer>
+            </div>
+        </div>
+        <div th:replace = "admin/common :: script"></div>
+    </body>
+</html>
